@@ -2,22 +2,19 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Container from '@mui/material/Container';
+import Tooltip from '@mui/material/Tooltip';
+import { Logout, Report, AccountCircle } from '@mui/icons-material';
 
-const pages = ['Home', 'Signup', 'Signin', 'About'];
-const settings = ['Profile', 'Dashboard', 'Logout'];
+const adminPages = ['Logout'];
 
-function ResponsiveAppBar({ setPage }) {
+function AdminAppBar({ setPage }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -39,37 +36,29 @@ function ResponsiveAppBar({ setPage }) {
   };
 
   return (
-    <AppBar
-      position="static"
-      sx={{
-        background: 'linear-gradient(90deg, #1e3c72 0%, #2a5298 100%)',
-        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
-      }}
-    >
+    <AppBar position="static" sx={{ backgroundColor: '#1d2b49' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Logo Section */}
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'white' }} />
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{
-              mr: 2,
+              flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
-              fontWeight: 'bold',
-              color: 'white',
-              textShadow: '1px 1px #000',
+              fontWeight: 700,
+              fontSize: '1.5rem',
+              color: '#fff'
             }}
           >
-            BeyondBooks
+            Admin Panel
           </Typography>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
-              aria-label="menu"
+              aria-label="admin navigation menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -80,25 +69,32 @@ function ResponsiveAppBar({ setPage }) {
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
-              anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
               keepMounted
-              transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} cp={page} onClick={handleCloseNavMenu} sx={{ '&:hover': { backgroundColor: '#2a5298', color: 'white' } }}>
+              {adminPages.map((page) => (
+                <MenuItem key={page} cp={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          {/* Desktop Navigation */}
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'white' }} />
+          {/* Desktop Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {adminPages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -106,41 +102,43 @@ function ResponsiveAppBar({ setPage }) {
                   my: 2,
                   color: 'white',
                   display: 'block',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
-                  '&:hover': { backgroundColor: '#2a5298', textDecoration: 'underline' },
+                  fontWeight: 500,
+                  '&:hover': {
+                    backgroundColor: '#f8a902',
+                    color: '#1d2b49',
+                    borderRadius: '8px',
+                  }
                 }}
                 cp={page}
               >
+                {page === 'Logout' ? <Logout sx={{ marginRight: '8px' }} /> : <Report sx={{ marginRight: '8px' }} />}
                 {page}
               </Button>
             ))}
           </Box>
 
-          {/* User Avatar Section */}
+          {/* User Menu */}
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar sx={{ bgcolor: '#2a5298' }}>
-                  <AccountCircleIcon sx={{ color: 'white' }} />
-                </Avatar>
-              </IconButton>
-            </Tooltip>
+            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
-              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
               keepMounted
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{ '&:hover': { backgroundColor: '#2a5298', color: 'white' } }}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem key="Logout" onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
@@ -149,4 +147,4 @@ function ResponsiveAppBar({ setPage }) {
   );
 }
 
-export default ResponsiveAppBar;
+export default AdminAppBar;
