@@ -13,7 +13,7 @@ const VisualizeAchievements = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/api/achievements/levels') // Ensure this matches your backend endpoint
+      .get('https://backenddep-production.up.railway.app/api/achievements/levels') // Ensure this matches your backend endpoint
       .then((response) => {
         const data = response.data;
 
