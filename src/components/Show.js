@@ -6,7 +6,7 @@ export default function Show() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/all").then((res) => {
+    axios.get("https://backenddep-production.up.railway.app/all").then((res) => {
       setResult(res.data);
     });
   }, [result]);
