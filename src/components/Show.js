@@ -12,7 +12,7 @@ export default function Show() {
   }, [result]);
 
   function Deletefun(email) {
-    axios.delete("http://localhost:8080/delete", { params: { email } })
+    axios.delete("https://backenddep-production.up.railway.app/delete", { params: { email } })
       .then((res) => {
         alert(res.data);
         setResult(null);
