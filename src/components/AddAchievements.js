@@ -37,7 +37,7 @@ const AddAchievements = ({ setPage }) => {
     };
 
     try {
-      const response = await axios.post('http://localhost:8080/api/achievements/add', newAchievement);
+      const response = await axios.post('https://backenddep-production.up.railway.app/api/achievements/add', newAchievement);
       if (response.status === 200) {
         setSnackbar({ open: true, message: 'Achievement added successfully!', severity: 'success' });
 
