@@ -6,7 +6,7 @@ const FetchEvents = ({ setPage, email }) => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/events/") // Fetch events from the backend
+    fetch("https://backenddep-production.up.railway.app/api/events/") // Fetch events from the backend
       .then((response) => response.json())
       .then((data) => {
         setEvents(data);
@@ -28,7 +28,7 @@ const FetchEvents = ({ setPage, email }) => {
       email: email,
     };
 
-    fetch("http://localhost:8080/api/participants", {
+    fetch("https://backenddep-production.up.railway.app/api/participants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
