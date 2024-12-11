@@ -10,7 +10,7 @@ const FetchParticipants = () => {
   const participantsPerPage = 6;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/participants')
+    axios.get('https://backenddep-production.up.railway.app/api/participants')
       .then(response => {
         setParticipants(response.data);
         setLoading(false);
