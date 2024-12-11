@@ -12,7 +12,7 @@ const Achievements = () => {
     setError(""); // Clear previous error messages
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/achievements/email/${email}`
+        `https://backenddep-production.up.railway.app/api/achievements/email/${email}`
       );
       setAchievements(response.data);
     } catch (err) {
@@ -28,7 +28,7 @@ const Achievements = () => {
   const updateAchievement = async () => {
     try {
       await axios.put(
-        `http://localhost:8080/api/achievements/${editAchievement.id}`,
+        `https://backenddep-production.up.railway.app/api/achievements/${editAchievement.id}`,
         editAchievement
       );
       fetchAchievements(); // Refresh the achievements list
@@ -41,7 +41,7 @@ const Achievements = () => {
   // Delete achievement
   const deleteAchievement = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/achievements/${id}`);
+      await axios.delete(`https://backenddep-production.up.railway.app/api/achievements/${id}`);
       fetchAchievements(); // Refresh the achievements list
     } catch (err) {
       setError("An error occurred while deleting the achievement.");
