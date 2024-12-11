@@ -37,7 +37,7 @@ const AddEvent = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/events", formData, {
+      const response = await axios.post("https://backenddep-production.up.railway.app/api/events", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
