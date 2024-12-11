@@ -34,7 +34,7 @@ const ViewAchievements = ({ setPage }) => {
           return;
         }
   
-        const response = await axios.get(`http://localhost:8080/api/achievements/email/${userEmail}`);
+        const response = await axios.get(`https://backenddep-production.up.railway.app/api/achievements/email/${userEmail}`);
         setAchievements(response.data);
       } catch (error) {
         console.error('Error fetching achievements:', error);
@@ -75,7 +75,7 @@ const ViewAchievements = ({ setPage }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:8080/api/achievements/${editAchievement.id}`, formData);
+      const response = await axios.put(`https://backenddep-production.up.railway.app/api/achievements/${editAchievement.id}`, formData);
       const updatedAchievement = response.data;
 
       setAchievements((prevAchievements) =>
@@ -99,7 +99,7 @@ const ViewAchievements = ({ setPage }) => {
   // Handle delete button click
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/achievements/${id}`);
+      await axios.delete(`https://backenddep-production.up.railway.app/api/achievements/${id}`);
       setAchievements((prev) => prev.filter((achievement) => achievement.id !== id));
       setSnackbarSeverity('success');
       setSnackbarMessage('Achievement deleted successfully!');
