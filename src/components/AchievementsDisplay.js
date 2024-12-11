@@ -35,7 +35,7 @@ const AchievementsDisplay = ({ setPage }) => {
         }
 
         const response = await axios.get(
-          `http://localhost:8080/api/achievements/email/${userEmail}`
+          `https://backenddep-production.up.railway.app/api/achievements/email/${userEmail}`
         );
         setAchievements(response.data);
       } catch (error) {
