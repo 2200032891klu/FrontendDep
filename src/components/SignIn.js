@@ -27,7 +27,7 @@ export default function SignIn({ setPage, setUserEmail }) {
     const email = data.get('email');
     const password = data.get('password');
 
-    if (email === '2200032891cseh@gmail.com' && password === 'Harsha') {
+    if (email === 'admin' && password === 'admin') {
       setPage('AdminPanel');
       setErrorMessage('Admin recognized!');
     } else {
