@@ -41,7 +41,7 @@ export default function SignUp({ setPage }) {
     }
 
     axios
-      .post('http://localhost:8080/user', {
+      .post('https://backenddep-production.up.railway.app/user', {
         name: data.get('name'),
         email: data.get('email'),
         password: data.get('password'),
