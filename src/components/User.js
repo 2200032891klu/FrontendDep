@@ -8,7 +8,7 @@ export default function User() {
         const email = document.getElementsByName("t1")[0].value;
         console.log(email);
 
-        axios.get("http://localhost:8080/user", { params: { email } })
+        axios.get("https://backenddep-production.up.railway.app/user", { params: { email } })
             .then((res) => {
                 console.log(res.data);
                 setUserDetails(res.data);
